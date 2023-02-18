@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `client` (
-  `LoanAccNumber` int NOT NULL,
+  `LoanAccNumber` int NOT NULL DEFAULT 1,
   `Name` varchar(45) NOT NULL,
   `Email` varchar(45) NOT NULL,
   `MobileNumber` varchar(10) DEFAULT NULL,

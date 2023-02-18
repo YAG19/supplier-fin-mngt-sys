@@ -16,7 +16,7 @@ public class ClientRegistrationController {
     @Autowired
     ClientService clientService;
     @PostMapping(path="/registration", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    Boolean clientRegistration(@RequestBody Client client){
+    public Client clientRegistration(@RequestBody Client client){
         return clientService.createClient(client);
     }
 }

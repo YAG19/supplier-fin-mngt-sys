@@ -4,7 +4,9 @@ import com.capstoneproj.supfinsys.models.Client;
 import com.capstoneproj.supfinsys.repository.ClientRepository;
 import com.capstoneproj.supfinsys.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ClientServiceImp implements ClientService {
 
 
@@ -12,8 +14,8 @@ public class ClientServiceImp implements ClientService {
     ClientRepository clientRepository;
 
     @Override
-    public Boolean createClient(Client client) {
-        clientRepository.save(client);
-        return true;
+    public Client createClient(Client client) {
+    	  return clientRepository.save(client);
+
     }
 }
