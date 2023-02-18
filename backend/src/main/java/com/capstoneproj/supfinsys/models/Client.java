@@ -7,23 +7,54 @@ import jakarta.persistence.*;
 public class Client {
 
     @Id
-    @Column(name = "LoanAccNumber", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "loanAccNumber", nullable = false)
     private Integer loanAccNumber;
 
-    @Column(name = "Name", nullable = false, length = 45)
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @Column(name = "Email", nullable = false, length = 45)
+    @Column(name = "email", nullable = false, length = 45)
     private String email;
 
-    @Column(name = "MobileNumber", length = 10)
+    @Column(name = "mobileNumber", length = 10)
     private String mobileNumber;
 
-    @Column(name = "Address", length = 60)
+    @Column(name = "address", length = 60)
     private String address;
 
-    @Column(name = "LoanInfo", length = 45)
+    @Column(name = "loanInfo", length = 45)
     private String loanInfo;
+
+    @Column(name = "username", length = 20 )
+    private String username;
+
+    @Column(name = "password", length = 40 )
+    private String password;
+
+    public String getLoanInfo() {
+        return loanInfo;
+    }
+
+    public void setLoanInfo(String loanInfo) {
+        this.loanInfo = loanInfo;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getLonaInfo() {
         return loanInfo;

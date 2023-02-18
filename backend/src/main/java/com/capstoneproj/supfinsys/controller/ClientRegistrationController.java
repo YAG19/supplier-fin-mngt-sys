@@ -17,10 +17,7 @@ public class ClientRegistrationController {
     @Autowired
     ClientService clientService;
     @PostMapping(path="/registration")
-    ResponseEntity<Boolean> clientRegistration(@RequestBody Client client){
-        if(clientService.createClient(client)){
-        return ResponseEntity.ok(true);
-        };
-        return ResponseEntity.ok(false);
+    Client clientRegistration(@RequestBody Client client){
+        return clientService.createClient(client);
     }
 }

@@ -14,7 +14,6 @@ public class SupplierServiceImp implements SupplierService {
 
 	@Override
 	public Supplier createSupplier(Supplier supplier) {
-		// TODO Auto-generated method stub
 		return supplierRepository.save(supplier);
 	}
 

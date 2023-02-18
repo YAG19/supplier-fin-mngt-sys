@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.springframework.boot.autoconfigure.security.saml2.Saml2RelyingPartyAutoConfiguration;
 
 @Entity
 @Table(name = "supplierinfo")
@@ -26,6 +27,12 @@ public class Supplier {
 	
 	@Column(name = "creditinfo", length = 45)
 	private String creditInfo;
+
+	@Column(name = "username", length = 25  )
+	private String username;
+
+	@Column(name = "password" , length = 40 )
+	private String password;
 
 	public int getCreditAccNumber() {
 		return creditAccNumber;
