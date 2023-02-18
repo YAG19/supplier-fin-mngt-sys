@@ -1,6 +1,10 @@
 export interface UserDto {
-  username: string;
+  loanAccNumber: number;
   name: string;
-  password: string;
   email: string;
+  mobileNumber: string;
+  address: string;
+  loanInfo: string;
+  username: string;
+  password: string;
 }

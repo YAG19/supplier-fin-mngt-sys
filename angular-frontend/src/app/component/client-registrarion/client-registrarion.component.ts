@@ -28,10 +28,10 @@ export class ClientRegistrarionComponent implements OnInit {
 
     ngOnInit() {
         this.clientRegistrationForm = this.formBuilder.group({
-            name: ['', Validators.required],
-            email: ['', Validators.required, Validators.email],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            name: ['yagnesh', Validators.required],
+            email: ['yagnesh@gmail.com', [Validators.required, Validators.email]],
+            username: ['yagnesh1234', Validators.required],
+            password: ['yagnesh1234', [Validators.required, Validators.minLength(6)]]
         });
     }
 
@@ -46,6 +46,8 @@ export class ClientRegistrarionComponent implements OnInit {
         password: this.clientRegistrationForm.controls.password.value
       } as UserDto;
         this.submitted = true;
+        console.log("-----calling backend ------");
+
         this.clientService.create(payload);
         // reset alerts on submit
         // this.alertService.clear();
