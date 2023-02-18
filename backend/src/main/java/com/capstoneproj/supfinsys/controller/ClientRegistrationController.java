@@ -1,4 +1,4 @@
-package controller;
+package com.capstoneproj.supfinsys.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package models;
+package com.capstoneproj.supfinsys.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
