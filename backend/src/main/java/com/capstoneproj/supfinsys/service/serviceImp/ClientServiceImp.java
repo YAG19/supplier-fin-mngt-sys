@@ -16,8 +16,8 @@ public class ClientServiceImp implements ClientService {
     ClientRepository clientRepository;
 
     @Override
-    public Boolean createClient(Client client) {
-        clientRepository.save(client);
-        return true;
+    public Client createClient(Client client) {
+    	  return clientRepository.save(client);
+
     }
 }

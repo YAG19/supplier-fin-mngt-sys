@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LoanAccNumber", nullable = false)
     private Integer loanAccNumber;
 
