@@ -20,4 +20,12 @@ public class ClientServiceImp implements ClientService {
         return clientRepository.save(client);
 
     }
+
+	@Override
+	public Client getClient(String userName) {
+		// TODO Auto-generated method stub
+		return clientRepository.findByUserName(userName);
+	}
+
+
 }
