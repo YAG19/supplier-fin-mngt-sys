@@ -1,4 +1,9 @@
 package com.capstoneproj.supfinsys.service;
 
-public class ClientService {
+import com.capstoneproj.supfinsys.models.Client;
+
+public interface ClientService {
+
+
+    Boolean createClient(Client client);
 }
