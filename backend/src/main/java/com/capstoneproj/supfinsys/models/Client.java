@@ -3,13 +3,13 @@ package com.capstoneproj.supfinsys.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Client")
+@Table(name = "client")
 public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LoanAccNumber", nullable = false)
-    private Integer id;
+    private Integer loanAccNumber;
 
     @Column(name = "Name", nullable = false, length = 45)
     private String name;
@@ -23,15 +23,15 @@ public class Client {
     @Column(name = "Address", length = 60)
     private String address;
 
-    @Column(name = "LonaInfo", length = 45)
-    private String lonaInfo;
+    @Column(name = "LoanInfo", length = 45)
+    private String loanInfo;
 
     public String getLonaInfo() {
-        return lonaInfo;
+        return loanInfo;
     }
 
     public void setLonaInfo(String lonaInfo) {
-        this.lonaInfo = lonaInfo;
+        this.loanInfo = lonaInfo;
     }
 
     public String getAddress() {
@@ -66,11 +66,13 @@ public class Client {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getLoanAccNumber() {
+        return loanAccNumber;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLoanAccNumber(Integer loanAccNumber) {
+        this.loanAccNumber = loanAccNumber;
     }
+
+
 }
