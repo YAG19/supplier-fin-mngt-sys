@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 public interface ClientService {
     
     Client createClient(Client client);
+    Client getClient(String userName);
 }

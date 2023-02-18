@@ -1,6 +1,7 @@
 package com.capstoneproj.supfinsys.controller;
 
 import com.capstoneproj.supfinsys.models.Client;
+import com.capstoneproj.supfinsys.models.Userdto;
 import com.capstoneproj.supfinsys.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,5 +19,24 @@ public class ClientRegistrationController {
     @PostMapping(path="/registration")
     Client clientRegistration(@RequestBody Client client){
         return clientService.createClient(client);
+    }
+    
+    @PostMapping(path="/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Client clientlogin(@RequestBody Userdto user){
+    	Client client = new Client();
+    	
+    	if(user.getUserName().equals(client.getUsername()))
+    	{
+    		if(user.getPassword().equals(client.getPassword()))
+    		{
+    		return clientService.getClient(client.getUsername());
+    		}
+    	}
+    	else
+    	{
+    		//TODO
+    	}
+    	return clientService.getClient(client.getUsername());
+    		
     }
 }
