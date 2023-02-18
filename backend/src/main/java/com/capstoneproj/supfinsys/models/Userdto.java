@@ -4,27 +4,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Userdto {
 	
-	@JsonProperty("userName")
-	private String userName;
-	
+	@JsonProperty("username")
+	private String username;
+
 	@JsonProperty("password")
 	private String password;
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public String getPassword() {
 		return password;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }

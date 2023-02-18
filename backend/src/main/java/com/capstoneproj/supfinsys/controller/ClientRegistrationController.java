@@ -22,21 +22,7 @@ public class ClientRegistrationController {
     }
     
     @PostMapping(path="/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Client clientlogin(@RequestBody Userdto user){
-    	Client client = new Client();
-    	
-    	if(user.getUserName().equals(client.getUsername()))
-    	{
-    		if(user.getPassword().equals(client.getPassword()))
-    		{
-    		return clientService.getClient(client.getUsername());
-    		}
-    	}
-    	else
-    	{
-    		//TODO
-    	}
-    	return clientService.getClient(client.getUsername());
-    		
+    public Client login(@RequestBody Userdto user){
+	return clientService.login(user);
     }
 }

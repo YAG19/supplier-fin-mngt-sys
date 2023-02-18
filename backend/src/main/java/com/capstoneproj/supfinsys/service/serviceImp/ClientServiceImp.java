@@ -1,6 +1,7 @@
 package com.capstoneproj.supfinsys.service.serviceImp;
 
 import com.capstoneproj.supfinsys.models.Client;
+import com.capstoneproj.supfinsys.models.Userdto;
 import com.capstoneproj.supfinsys.repository.ClientRepository;
 import com.capstoneproj.supfinsys.service.ClientService;
 import jakarta.transaction.Transactional;
@@ -23,9 +24,21 @@ public class ClientServiceImp implements ClientService {
 
 	@Override
 	public Client getClient(String userName) {
-		// TODO Auto-generated method stub
 		return clientRepository.findByUserName(userName);
 	}
+
+    @Override
+    public Client login(Userdto user) {
+        Client dbClient = getClient(user.getUsername());
+        if(dbClient.getPassword() == null ) {
+            return null;
+        }
+            if (dbClient.getPassword().equals(user.getPassword())) {
+                return dbClient;
+            }
+
+        return null;
+    }
 
 
 }
