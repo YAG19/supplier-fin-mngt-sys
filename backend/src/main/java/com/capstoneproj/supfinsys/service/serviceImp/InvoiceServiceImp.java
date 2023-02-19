@@ -16,15 +16,8 @@ public class InvoiceServiceImp implements InvoiceService {
 
 	@Override
 	public Invoice uploadInvoice(Invoice invoice) {
-		// TODO Auto-generated method stub
 		return invoiceRepository.save(invoice);
 	}
 
-	/*@Override
-	public Invoice store(MultipartFile file) {
-		// TODO Auto-generated method stub
-		Invoice invoice=new Invoice();
-		return invoiceRepository.save(invoice);
-	}*/
 
 }

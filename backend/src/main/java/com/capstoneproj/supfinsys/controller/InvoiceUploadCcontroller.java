@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.capstoneproj.supfinsys.models.Invoice;
 import com.capstoneproj.supfinsys.service.InvoiceService;
 
+import java.io.IOException;
+
 
 @RestController
 @RequestMapping("/api/invoice")
@@ -22,9 +24,9 @@ public class InvoiceUploadCcontroller {
 
 
 	@PostMapping("/upload")
-	public Invoice invoiceUpload(@ModelAttribute Invoice invoice ,BindingResult result, @RequestParam("file") MultipartFile file) {
+	public Invoice invoiceUpload(@ModelAttribute Invoice invoice ,BindingResult result, @RequestParam("file") MultipartFile file) throws IOException {
+		invoice.setFile(file.getBytes());
 		return  invoiceService.uploadInvoice(invoice);
-		
 
 	}
 }
