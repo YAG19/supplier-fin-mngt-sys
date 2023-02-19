@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.capstoneproj.supfinsys.models.Invoice;
 import com.capstoneproj.supfinsys.service.InvoiceService;
 
+
 @RestController
 @RequestMapping("/api/invoice")
 public class InvoiceUploadCcontroller {
@@ -18,11 +19,11 @@ public class InvoiceUploadCcontroller {
 	@Autowired
 	InvoiceService invoiceService;
 
+
 	@PostMapping("/upload")
 	public Invoice invoiceUpload(@ModelAttribute Invoice invoice, @RequestParam("file") MultipartFile file) {
-		invoiceService.uploadInvoice(invoice);
-		return invoiceService.store(file);
+		return  invoiceService.uploadInvoice(invoice);
+		
 
 	}
-
 }

@@ -7,7 +7,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Invoice")
+@Table(name="invoiceData")
 public class Invoice {
 	
 	@Id
@@ -25,8 +25,6 @@ public class Invoice {
 	
 	@Column(name = "currency", nullable = false)
 	private String currency;
-	@Lob
-	private byte[] file;
 
 	public Integer getSupplierCode() {
 		return supplierCode;
@@ -68,13 +66,6 @@ public class Invoice {
 		this.currency = currency;
 	}
 
-	public byte[] getFile() {
-		return file;
-	}
-
-	public void setFile(byte[] file) {
-		this.file = file;
-	}
 
 	@Override
 	public String toString() {

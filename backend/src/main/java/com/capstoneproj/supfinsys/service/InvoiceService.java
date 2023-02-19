@@ -7,7 +7,8 @@ import com.capstoneproj.supfinsys.models.Invoice;
 
 @Service("InvoiceService")
 public interface InvoiceService {
-	public Invoice store(MultipartFile file);
+	
 	Invoice uploadInvoice(Invoice invoice);
+	//public Invoice store(MultipartFile file);
 
 }
