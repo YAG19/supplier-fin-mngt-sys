@@ -1,6 +1,7 @@
 package com.capstoneproj.supfinsys.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class InvoiceUploadCcontroller {
 
 
 	@PostMapping("/upload")
-	public Invoice invoiceUpload(@ModelAttribute Invoice invoice, @RequestParam("file") MultipartFile file) {
+	public Invoice invoiceUpload(@ModelAttribute Invoice invoice ,BindingResult result, @RequestParam("file") MultipartFile file) {
 		return  invoiceService.uploadInvoice(invoice);
 		
 

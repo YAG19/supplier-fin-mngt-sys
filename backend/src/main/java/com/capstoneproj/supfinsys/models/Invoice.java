@@ -25,6 +25,10 @@ public class Invoice {
 	
 	@Column(name = "currency", nullable = false)
 	private String currency;
+	
+	@Column(name = "file")
+	@Lob
+	private byte[] file;
 
 	public Integer getSupplierCode() {
 		return supplierCode;
@@ -66,6 +70,14 @@ public class Invoice {
 		this.currency = currency;
 	}
 
+
+	public byte[] getFile() {
+		return file;
+	}
+
+	public void setFile(byte[] file) {
+		this.file = file;
+	}
 
 	@Override
 	public String toString() {
