@@ -1,15 +1,14 @@
 package com.capstoneproj.supfinsys.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.capstoneproj.supfinsys.models.Client;
 import com.capstoneproj.supfinsys.models.Supplier;
 import com.capstoneproj.supfinsys.service.SupplierService;
 
+
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api/supplier")
 public class SupplierRegistrationController {

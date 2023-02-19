@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -9,16 +9,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientRegistrarionComponent } from './component/client-registrarion/client-registrarion.component';
 import { LoginComponent } from './component/login/login.component';
+import { HomeComponent } from './component/home/home.component';
+import { SupplierRegistrationComponent } from './component/supplier-registration/supplier-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientRegistrarionComponent,
+    SupplierRegistrationComponent,
+    HomeComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
