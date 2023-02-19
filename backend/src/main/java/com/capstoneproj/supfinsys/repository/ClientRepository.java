@@ -15,6 +15,10 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	@Query(value = "select c from Client c where c.username = ?1")
 	Client findByUserName(String username);
 
+	boolean existsByUsername(String username);
+
+
+
 //	@Query("")
 //	Optional<Client> getByUsername(String username);
 }

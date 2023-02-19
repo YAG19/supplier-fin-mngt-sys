@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { ClientService } from 'src/app/service/ClientService.service';
 import { UserDto } from 'src/app/infrastructure/models/UserDto.dto';
+import { NotificationServiceService } from 'src/app/service/NotificationService.service';
 
 // import { AccountService, AlertService } from '@app/_services';
 
@@ -22,14 +23,14 @@ export class ClientRegistrarionComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private clientService: ClientService
-        // private alertService: AlertService
+        private clientService: ClientService,
+        private notifyService: NotificationServiceService
     ) { }
 
     ngOnInit() {
         this.clientRegistrationForm = this.formBuilder.group({
             name: ['yagnesh', Validators.required],
-            email: ['yagnesh@gmail.com', [Validators.required, Validators.email]],
+            email: ['yagnesh@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
             username: ['yagnesh1234', Validators.required],
             password: ['yagnesh1234', [Validators.required, Validators.minLength(6)]]
         });
@@ -46,18 +47,35 @@ export class ClientRegistrarionComponent implements OnInit {
         password: this.clientRegistrationForm.controls.password.value
       } as UserDto;
         this.submitted = true;
-        console.log("-----calling backend ------");
+        if (this.clientRegistrationForm.invalid) {
+          return;
+      }
 
-        this.clientService.create(payload);
+      this.loading = true;
+
+
+        this.clientService.create(payload).subscribe(
+          (data) => {
+            console.log(data);
+              if(data?.loanAccNumber){
+                this.notifyService.showSuccess("Successfully Registerd", "");
+
+                this.router.navigate(['/login']);
+              }
+          }
+          ,
+          (error) =>{
+            console.log(error);
+            const errorMsg = error?.error?.message;
+            this.notifyService.showWarning(errorMsg, "")
+            this.loading = false;
+
+         }
+        );
         // reset alerts on submit
         // this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.clientRegistrationForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
         // this.accountService.register(this.form.value)
             // .pipe(first())
             // .subscribe({

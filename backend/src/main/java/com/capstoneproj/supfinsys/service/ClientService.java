@@ -4,13 +4,12 @@ import com.capstoneproj.supfinsys.models.Userdto;
 import org.springframework.stereotype.Service;
 
 import com.capstoneproj.supfinsys.models.Client;
-import org.springframework.stereotype.Service;
 
 @Service("ClientService")
 public interface ClientService {
     
     Client createClient(Client client);
-    Client getClient(String userName);
-
+    Client getClientByUsername(String userName);
+    boolean clientUsernameExists(String username);
     Client login(Userdto user);
 }

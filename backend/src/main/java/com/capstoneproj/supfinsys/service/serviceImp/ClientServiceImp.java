@@ -19,24 +19,27 @@ public class ClientServiceImp implements ClientService {
     @Override
     public Client createClient(Client client) {
         return clientRepository.save(client);
-
     }
 
 	@Override
-	public Client getClient(String userName) {
-		return clientRepository.findByUserName(userName);
-	}
+	public Client getClientByUsername(String userName) {
+        return clientRepository.findByUserName(userName);
+    }
+
+    @Override
+    public boolean clientUsernameExists(String username) {
+        return clientRepository.existsByUsername(username);
+    }
 
     @Override
     public Client login(Userdto user) {
-        Client dbClient = getClient(user.getUsername());
+        Client dbClient = getClientByUsername(user.getUsername());
         if(dbClient.getPassword() == null ) {
             return null;
         }
             if (dbClient.getPassword().equals(user.getPassword())) {
                 return dbClient;
             }
-
         return null;
     }
 
