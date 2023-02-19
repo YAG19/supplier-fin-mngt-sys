@@ -18,6 +18,9 @@ export class ClientRegistrarionComponent implements OnInit {
     clientRegistrationForm!: FormGroup;
     loading = false;
     submitted = false;
+    public countryList = ["India","Australia","United States"];
+    public cityList = ["Ahemdabad","Banglore","Mumbai","Sydney"];
+    public stateList = ["Gujarat","Karnataka","Maharastra"];
 
     constructor(
         private formBuilder: FormBuilder,
@@ -29,8 +32,14 @@ export class ClientRegistrarionComponent implements OnInit {
 
     ngOnInit() {
         this.clientRegistrationForm = this.formBuilder.group({
-            name: ['yagnesh', Validators.required],
+            name: ['yagnesh', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+            address: [''],
+            city:[''],
+            state:[],
+            country:[],
             email: ['yagnesh@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+            mobNumber: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+            loanInfo: ['Home', Validators.required],
             username: ['yagnesh1234', Validators.required],
             password: ['yagnesh1234', [Validators.required, Validators.minLength(6)]]
         });
@@ -40,11 +49,15 @@ export class ClientRegistrarionComponent implements OnInit {
     get f() { return this.clientRegistrationForm.controls; }
 
     onSubmit() {
+      const address = this.clientRegistrationForm.controls.address.value + ' City: ' + this.clientRegistrationForm.controls.city.value + ' State: ' + this.clientRegistrationForm.controls.state.value + ' Country: ' + this.clientRegistrationForm.controls.country.value
       const payload = {
         name: this.clientRegistrationForm.controls.name.value,
         email: this.clientRegistrationForm.controls.email.value,
         username: this.clientRegistrationForm.controls.username.value,
-        password: this.clientRegistrationForm.controls.password.value
+        password: this.clientRegistrationForm.controls.password.value,
+        address:address,
+        mobileNumber: this.clientRegistrationForm.controls.mobNumber.value,
+        loanInfo: this.clientRegistrationForm.controls.loanInfo.value
       } as UserDto;
         this.submitted = true;
         if (this.clientRegistrationForm.invalid) {
@@ -52,8 +65,7 @@ export class ClientRegistrarionComponent implements OnInit {
       }
 
       this.loading = true;
-
-
+      console.log(payload);
         this.clientService.create(payload).subscribe(
           (data) => {
             console.log(data);
