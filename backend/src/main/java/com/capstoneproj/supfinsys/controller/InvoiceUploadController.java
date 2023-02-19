@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/invoice")
-public class InvoiceUploadCcontroller {
+public class InvoiceUploadController {
 
 	@Autowired
 	InvoiceService invoiceService;
@@ -26,7 +26,6 @@ public class InvoiceUploadCcontroller {
 	@PostMapping("/upload")
 	public Invoice invoiceUpload(@ModelAttribute Invoice invoice ,BindingResult result, @RequestParam("file") MultipartFile file) throws IOException {
 		invoice.setFile(file.getBytes());
-		return  invoiceService.uploadInvoice(invoice);
-
+		return invoiceService.uploadInvoice(invoice);
 	}
 }

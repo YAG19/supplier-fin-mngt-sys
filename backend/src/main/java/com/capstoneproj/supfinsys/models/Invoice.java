@@ -20,8 +20,8 @@ public class Invoice {
 	@Column(name = "invoiceDate", nullable = false)
 	private  String invoiceDate ;
 	
-	@Column(name = "invoiceAmmount", nullable = false)
-	private Integer invoiceAmmount;
+	@Column(name = "invoiceAmount", nullable = false)
+	private Integer invoiceAmount;
 	
 	@Column(name = "currency", nullable = false)
 	private String currency;
@@ -54,12 +54,12 @@ public class Invoice {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public Integer getInvoiceAmmount() {
-		return invoiceAmmount;
+	public Integer getInvoiceAmount() {
+		return invoiceAmount;
 	}
 
-	public void setInvoiceAmmount(Integer invoiceAmmount) {
-		this.invoiceAmmount = invoiceAmmount;
+	public void setInvoiceAmount(Integer invoiceAmount) {
+		this.invoiceAmount = invoiceAmount;
 	}
 
 	public String getCurrency() {
@@ -82,7 +82,7 @@ public class Invoice {
 	@Override
 	public String toString() {
 		return "Invoice [supplierCode=" + supplierCode + ", invoiceNumber=" + invoiceNumber + ", invoiceDate="
-				+ invoiceDate + ", invoiceAmmount=" + invoiceAmmount + ", currency=" + currency + "]";
+				+ invoiceDate + ", invoiceAmmount=" + invoiceAmount + ", currency=" + currency + "]";
 	}
 	
 	

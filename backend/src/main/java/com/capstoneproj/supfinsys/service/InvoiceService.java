@@ -9,6 +9,5 @@ import com.capstoneproj.supfinsys.models.Invoice;
 public interface InvoiceService {
 	
 	Invoice uploadInvoice(Invoice invoice);
-	//public Invoice store(MultipartFile file);
 
 }

@@ -19,5 +19,4 @@ public class InvoiceServiceImp implements InvoiceService {
 		return invoiceRepository.save(invoice);
 	}
 
-
 }
