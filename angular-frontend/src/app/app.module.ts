@@ -11,12 +11,14 @@ import { ClientRegistrarionComponent } from './component/client-registrarion/cli
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { SupplierRegistrationComponent } from './component/supplier-registration/supplier-registration.component';
+import { InvoiceUploadComponent } from './component/invoice-upload/invoice-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientRegistrarionComponent,
     SupplierRegistrationComponent,
+    InvoiceUploadComponent,
     HomeComponent,
     LoginComponent
   ],
