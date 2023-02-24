@@ -1,17 +1,25 @@
 package com.capstoneproj.supfinsys.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.springframework.boot.autoconfigure.security.saml2.Saml2RelyingPartyAutoConfiguration;
+import jakarta.persistence.*;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "supplierinfo")
+@Table(name = "supplier")
 public class Supplier {
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Long id;
+
+	@OneToOne(mappedBy = "supplier")
+	private User user;
+
 	@Column(name = "creditaccountnumber", nullable = false)
-	private int creditAccNumber;
+	private Long creditAccNumber;
 	
 	@Column(name = "suppliername", nullable = false, length = 45)
 	private String supplierName;
@@ -22,39 +30,34 @@ public class Supplier {
 	@Column(name = "suppliermobnumber", length = 10)
 	private int supplierMob;
 	
-	@Column(name = "supplieraddress", length = 60)
+	@Column(name = "supplieraddress", length = 200)
 	private String supplierAddress;
 	
-	@Column(name = "creditinfo", length = 45)
+	@Column(name = "creditinfo", length = 145)
 	private String creditInfo;
 
-	@Column(name = "username", length = 25  )
-	private String username;
 
-	@Column(name = "password" , length = 40 )
-	private String password;
-
-	public String getUsername() {
-		return username;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getPassword() {
-		return password;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getCreditAccNumber() {
+	public Long getCreditAccNumber() {
 		return creditAccNumber;
 	}
 
-	public void setCreditAccNumber(int creditAccNumber) {
+	public void setCreditAccNumber(Long creditAccNumber) {
 		this.creditAccNumber = creditAccNumber;
 	}
 
@@ -96,12 +99,5 @@ public class Supplier {
 
 	public void setCreditInfo(String creditInfo) {
 		this.creditInfo = creditInfo;
-	}
-
-	@Override
-	public String toString() {
-		return "Supplier [creditAccNumber=" + creditAccNumber + ", supplierName=" + supplierName + ", supplierEmail="
-				+ supplierEmail + ", supplierMob=" + supplierMob + ", supplierAddress=" + supplierAddress
-				+ ", creditInfo=" + creditInfo + "]";
 	}
 }

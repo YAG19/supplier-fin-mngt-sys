@@ -33,19 +33,19 @@ export class ClientRegistrarionComponent implements OnInit {
     ngOnInit() {
         this.clientRegistrationForm = this.formBuilder.group({
             name: ['yagnesh', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-            address: [''],
+            address: ['Room no 101, xyz society'],
             city:[''],
             state:[],
             country:[],
             email: ['yagnesh@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
             mobNumber: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+            loanAccNumber: [123456, Validators.required],
             loanInfo: ['Home', Validators.required],
             username: ['yagnesh1234', Validators.required],
             password: ['yagnesh1234', [Validators.required, Validators.minLength(6)]]
         });
     }
 
-    // convenience getter for easy access to form fields
     get f() { return this.clientRegistrationForm.controls; }
 
     onSubmit() {
@@ -57,6 +57,7 @@ export class ClientRegistrarionComponent implements OnInit {
         password: this.clientRegistrationForm.controls.password.value,
         address:address,
         mobileNumber: this.clientRegistrationForm.controls.mobNumber.value,
+        loanAccNumber: this.clientRegistrationForm.controls.loanAccNumber.value,
         loanInfo: this.clientRegistrationForm.controls.loanInfo.value
       } as UserDto;
         this.submitted = true;
@@ -69,7 +70,7 @@ export class ClientRegistrarionComponent implements OnInit {
         this.clientService.create(payload).subscribe(
           (data) => {
             console.log(data);
-              if(data?.loanAccNumber){
+              if(data){
                 this.notifyService.showSuccess("Successfully Registerd", "");
 
                 this.router.navigate(['/login']);

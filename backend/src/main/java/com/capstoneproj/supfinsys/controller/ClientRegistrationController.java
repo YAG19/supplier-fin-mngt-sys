@@ -4,8 +4,10 @@ import com.capstoneproj.supfinsys.exception.ClientException;
 import com.capstoneproj.supfinsys.exception.UsernameAlreadyExistsException;
 import com.capstoneproj.supfinsys.exception.UsernameNotFoundException;
 import com.capstoneproj.supfinsys.models.Client;
+import com.capstoneproj.supfinsys.models.ClientDto;
 import com.capstoneproj.supfinsys.models.Userdto;
 import com.capstoneproj.supfinsys.service.ClientService;
+import com.capstoneproj.supfinsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,16 +19,20 @@ public class ClientRegistrationController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    UserService userService;
     @PostMapping(path="/registration")
-    Client registration(@RequestBody Client client){
-        String username = client.getUsername();
-        if(clientService.clientUsernameExists(username)) throw new UsernameAlreadyExistsException("Username Already Exists");
-        return clientService.createClient(client);
+    boolean registration(@RequestBody ClientDto clientDto){
+        String username = clientDto.getUsername();
+        if(userService.clientUsernameExists(username)) throw new UsernameAlreadyExistsException("Username Already Exists");
+         clientService.createClient(clientDto);
+         return true;
     }
     
     @PostMapping(path="/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Client login(@RequestBody Userdto user){
-        if(clientService.clientUsernameExists(user.getUsername())) return clientService.login(user);
+        if(userService.clientUsernameExists(user.getUsername())) return clientService.login(user);
         throw new UsernameNotFoundException("Username Dose Not Exist");
     }
 

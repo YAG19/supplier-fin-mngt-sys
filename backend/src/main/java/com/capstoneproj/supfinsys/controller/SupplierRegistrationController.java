@@ -1,5 +1,6 @@
 package com.capstoneproj.supfinsys.controller;
 
+import com.capstoneproj.supfinsys.models.SupplierDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,10 @@ public class SupplierRegistrationController {
     SupplierService supplierService;
 	
 	@PostMapping("/registration")
-	public Supplier  supplierRegistration(@RequestBody Supplier supplier)
+	public boolean supplierRegistration(@RequestBody SupplierDto supplierDto)
 	{
-		return supplierService.createSupplier(supplier);
+		supplierService.createSupplier(supplierDto);
+		return true;
 	}
 	
 

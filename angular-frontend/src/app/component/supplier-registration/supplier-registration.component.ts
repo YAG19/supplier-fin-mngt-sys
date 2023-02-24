@@ -72,7 +72,7 @@ export class SupplierRegistrationComponent implements OnInit {
         this.supplierService.create(payload).subscribe(
           (data) => {
             console.log(data);
-              if(data?.creditAccNumber){
+              if(data){
                 this.notifyService.showSuccess("Successfully Registerd", "");
 
                 this.router.navigate(['/login']);

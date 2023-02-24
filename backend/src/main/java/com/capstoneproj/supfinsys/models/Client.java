@@ -1,36 +1,60 @@
 package com.capstoneproj.supfinsys.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+@Builder
 @Entity
 @Table(name = "client")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "loanAccNumber", nullable = false)
-    private Integer loanAccNumber;
+    @Column(name = "id")
+    private Long id;
+
+    @OneToOne(mappedBy = "client")
+    private User user;
 
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @Column(name = "email", nullable = false, length = 45)
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "mobileNumber", length = 10)
+    @Column(name = "mobileNumber", length = 12)
     private String mobileNumber;
 
-    @Column(name = "address", length = 60)
+    @Column(name = "address", length = 100)
     private String address;
 
-    @Column(name = "loanInfo", length = 45)
+    @Column(name = "loanInfo")
     private String loanInfo;
 
-    @Column(name = "username", length = 20 )
-    private String username;
+//    @Column(name = "username", length = 20 )
+//    private String username;
 
-    @Column(name = "password", length = 40 )
-    private String password;
+    @Column(name = "loanAccNumber", nullable = false)
+    private Long loanAccNumber;
+
+//    @Column(name = "password", length = 40 )
+//    private String password;
+
+//    @Column(name = "role")
+//    private String role;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getLoanInfo() {
         return loanInfo;
@@ -40,20 +64,12 @@ public class Client {
         this.loanInfo = loanInfo;
     }
 
-    public String getUsername() {
-        return username;
+    public Long getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLonaInfo() {
@@ -96,11 +112,11 @@ public class Client {
         this.name = name;
     }
 
-    public Integer getLoanAccNumber() {
+    public Long getLoanAccNumber() {
         return loanAccNumber;
     }
 
-    public void setLoanAccNumber(Integer loanAccNumber) {
+    public void setLoanAccNumber(Long loanAccNumber) {
         this.loanAccNumber = loanAccNumber;
     }
 
