@@ -30,7 +30,7 @@
 
   <div class="mb-3">
     <label for="invoiceFile" class="form-label">Invoice File</label>
-    <!-- <input type="file" id="invoiceFile" class="form-control" (change)="invoiceForm.patchValue({invoiceFile: $event.target.files[0]})" accept=".pdf,.doc,.docx"> -->
+    <input type="file" id="invoiceFile" class="form-control" (change)="onFileSelected($event)" accept=".pdf" #fileUpload>
   </div>
 
   <button type="submit" class="btn btn-primary" [disabled]="!invoiceForm.valid">Upload</button>
