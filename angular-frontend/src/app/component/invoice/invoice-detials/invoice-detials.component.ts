@@ -1,8 +1,9 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { ClientService } from 'src/app/service/ClientService.service';
+import { InvoiceService } from 'src/app/service/InvoiceService.service';
+import { NotificationServiceService } from 'src/app/service/NotificationService.service';
 
 @Component({
   selector: 'app-invoice-detials',
@@ -23,22 +24,40 @@ export class InvoiceDetialsComponent implements OnInit {
   id: any;
   role: any;
 
-    constructor(private route: ActivatedRoute,
-      private service: ClientService) { }
+    constructor(
+      private route: ActivatedRoute,
+      private service: ClientService,
+      private invoiceService: InvoiceService,
+      private notifyService: NotificationServiceService,
+      ) { }
 
     ngOnInit(): void {
-      // Set sample data for supplier invoices
-      let  data : string =  this.route.snapshot.queryParamMap.get('userData') || "";
-      console.log(JSON.parse(data));
-      console.log(this.username);
 
-      this.supplierCode = "SUP1234";
-      this.invoiceNumber = "INV5678";
-      this.invoiceDate = new Date();
-      this.invoiceAmount = 1000;
-      this.currency = "USD";
-      this.invoiceStatus = "Paid";
+      let  data : string =  this.route.snapshot.paramMap.get('username') || "";
+      this.username = data;
+
+      this.invoiceService.getInvoiceDetails(this.username).subscribe(
+        {
+          next: (data) => {
+            // this.notifyService.showSuccess("Successfully Uploaded Invoice","")
+
+              this.supplierCode = data?.supplierCode;
+              this.invoiceNumber = data?.invoiceNumber;
+              this.invoiceDate = data?.invoiceDate;
+              this.invoiceAmount = data?.invoiceAmount;
+              this.currency = data?.currency;
+              this.invoiceStatus = data?.invoiceStatus;
+          },
+          error: (err: any) => {
+                        console.log(err);
+                        const errorMsg = err?.error?.message;
+                        this.notifyService.showWarning(errorMsg, "")
+          },
+          complete: () => { }
+        }
+      );
     }
 
-  }
+}
+
 

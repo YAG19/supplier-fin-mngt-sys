@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { InvoiceDto } from 'src/app/infrastructure/models/InvoiceDto.dto';
 import { FileUploadService } from 'src/app/service/FileUploadService.service';
-import { InvoiceUploadService } from 'src/app/service/InvoiceUploadService.service';
+import { InvoiceService } from 'src/app/service/InvoiceService.service';
 import { NotificationServiceService } from 'src/app/service/NotificationService.service';
 
 @Component({
@@ -10,20 +11,26 @@ import { NotificationServiceService } from 'src/app/service/NotificationService.
   templateUrl: './invoice-upload.component.html',
   styleUrls: ['./invoice-upload.component.css']
 })
-export class InvoiceUploadComponent {
+export class InvoiceUploadComponent implements OnInit {
   public invoiceForm!: FormGroup;
   currencies = ['USD', 'GBP', 'Euro'];
   loading = false;
   submitted = false;
   file!: File;
+  username!: string;
 
   constructor(
     private fb: FormBuilder,
-    private invoiceService: InvoiceUploadService,
+    private invoiceService: InvoiceService,
     private notifyService: NotificationServiceService,
-    private fileUploadService :FileUploadService
+    private fileUploadService :FileUploadService,
+    private route: ActivatedRoute
     ) {
     this.initForm();
+  }
+  ngOnInit(): void {
+    let  data : string =  this.route.snapshot.paramMap.get('username') || "";
+    this.username = data;
   }
   initForm() {
     this.invoiceForm = this.fb.group({
@@ -50,12 +57,17 @@ export class InvoiceUploadComponent {
       this.notifyService.showWarning("Please Upload A file!","")
       return;
     }
+    if(!this.username){
+      this.notifyService.showWarning("Something Went Wrong please Login Again","")
+      return;
+    }
     const data = {
         currency: this.invoiceForm.controls.currency.value,
         invoiceAmount:this.invoiceForm.controls.invoiceAmount.value,
         invoiceDate: this.invoiceForm.controls.invoiceDate.value,
         invoiceNumber: this.invoiceForm.controls.invoiceNumber.value,
-        supplierCode: this.invoiceForm.controls.supplierCode.value
+        supplierCode: this.invoiceForm.controls.supplierCode.value,
+        username: this.username
     } as InvoiceDto;
 
     this.loading = true;
@@ -77,7 +89,7 @@ export class InvoiceUploadComponent {
             this.notifyService.showSuccess("Successfully Uploaded Invoice","")
           },
           error: (err: any) => {
-                                    console.log(err);
+                        console.log(err);
                         const errorMsg = err?.error?.message;
                         this.notifyService.showWarning(errorMsg, "")
                         this.loading = false;
@@ -85,7 +97,5 @@ export class InvoiceUploadComponent {
           complete: () => { }
         }
       );
-
-
-              }
+    }
 }

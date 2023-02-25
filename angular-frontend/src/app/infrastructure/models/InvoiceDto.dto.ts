@@ -4,5 +4,6 @@ export interface InvoiceDto {
   invoiceDate: string;
   invoiceAmount: number;
   currency: string;
+  username: string;
   file: File
 }

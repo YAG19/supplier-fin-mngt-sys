@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
+  public username!: string;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    let  paramsData : string =  this.route.snapshot.queryParamMap.get('userData') || "";
+    console.log(JSON.parse(paramsData));
+    let userData = JSON.parse(paramsData);
+    this.username = userData?.username;
   }
 
 }

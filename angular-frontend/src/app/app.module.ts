@@ -11,7 +11,7 @@ import { ClientRegistrarionComponent } from './component/client-registrarion/cli
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { SupplierRegistrationComponent } from './component/supplier-registration/supplier-registration.component';
-import { InvoiceUploadComponent } from './component/invoice-upload/invoice-upload.component';
+import { InvoiceUploadComponent } from './component/invoice/invoice-upload/invoice-upload.component';
 import { InvoiceComponent } from './component/invoice/invoice.component';
 import { InvoiceModule } from './component/invoice/invoice.module';
 

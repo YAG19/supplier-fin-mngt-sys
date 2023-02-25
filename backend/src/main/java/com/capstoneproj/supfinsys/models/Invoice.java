@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 @Table(name="invoiceData")
 public class Invoice {
-	
 
 	@Id
 	@Column(name = "id")
@@ -37,55 +36,6 @@ public class Invoice {
 	@Column(name = "file")
 	@Lob
 	private byte[] file;
-
-//	public Integer getSupplierCode() {
-//		return supplierCode;
-//	}
-//
-//	public void setSupplierCode(Integer supplierCode) {
-//		this.supplierCode = supplierCode;
-//	}
-//
-//	public Integer getInvoiceNumber() {
-//		return invoiceNumber;
-//	}
-//
-//	public void setInvoiceNumber(Integer invoiceNumber) {
-//		this.invoiceNumber = invoiceNumber;
-//	}
-//
-//	public String getInvoiceDate() {
-//		return invoiceDate;
-//	}
-//
-//	public void setInvoiceDate(String invoiceDate) {
-//		this.invoiceDate = invoiceDate;
-//	}
-//
-//	public Integer getInvoiceAmount() {
-//		return invoiceAmount;
-//	}
-//
-//	public void setInvoiceAmount(Integer invoiceAmount) {
-//		this.invoiceAmount = invoiceAmount;
-//	}
-//
-//	public String getCurrency() {
-//		return currency;
-//	}
-//
-//	public void setCurrency(String currency) {
-//		this.currency = currency;
-//	}
-//
-//
-//	public byte[] getFile() {
-//		return file;
-//	}
-//
-//	public void setFile(byte[] file) {
-//		this.file = file;
-//	}
 
 	@Override
 	public String toString() {

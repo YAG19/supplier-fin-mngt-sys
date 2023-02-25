@@ -9,6 +9,6 @@ public interface InvoiceService {
 	
 	Invoice uploadInvoice(Invoice invoice);
 
-	void getInvoiceData(String username);
+	Invoice getInvoiceData(String username);
 
 }

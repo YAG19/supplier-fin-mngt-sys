@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +22,11 @@ import java.io.IOException;
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api/invoice")
-@RequiredArgsConstructor
 public class InvoiceUploadController {
 
-	@Qualifier("InvoiceService")
+	@Autowired
 	private InvoiceService invoiceService;
+
 
 	@PostMapping(path = "/upload")
 	public ResponseEntity<ResponseMessage> invoiceUpload(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("invoice") String invoiceJson ) throws IOException {
@@ -37,9 +38,9 @@ public class InvoiceUploadController {
 		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Successfully Uploaded"));
 	}
 
-	@GetMapping("/view")
-	public void getInvoiceData(String username){
-		this.invoiceService.getInvoiceData(username);
+	@GetMapping(path = "/details/{username}")
+	public Invoice getInvoiceData(@PathVariable("username") String username){
+		return invoiceService.getInvoiceData(username);
 	}
 
 	private Invoice convertToDto(String invoiceJson) throws JsonProcessingException {

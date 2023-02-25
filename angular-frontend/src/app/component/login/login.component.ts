@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
                     this.notifyService.showSuccess("Login successful!","")
                     console.log(data)
                     let dataToSend = JSON.stringify(data)
-                    this.router.navigate(['invoice/invoice-details'], { queryParams: { userData: dataToSend } });
+                    this.router.navigate(['/invoice'], { queryParams: { userData: dataToSend } });
                   }
                   else{
                     this.notifyService.showError("Invalid Password","");

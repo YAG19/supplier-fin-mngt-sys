@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploadService } from './FileUploadService.service';
 
-const baseUrl = 'http://localhost:8081/api/invoice';
+const baseUrl = 'http://localhost:8080/api/invoice';
 @Injectable({
   providedIn: 'root'
 })
-export class InvoiceUploadService {
+export class InvoiceService {
 
   public login(value: any, value1: any): Observable<any> {
     const userDto = {
@@ -24,6 +24,10 @@ export class InvoiceUploadService {
 
   invoiceUpload(data: any,file: File): Observable<any> {
     return this.fileuploadService.upload(data,file);
+  }
+
+  getInvoiceDetails(username: string): Observable<any> {
+    return this.http.get(baseUrl + `/details/${username}`);
   }
 
 }

@@ -4,11 +4,11 @@
   <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-              <a class="nav-link login-custom" routerLink="/invoice/invoice-detail" > Invoice </a>
-          <!-- </li>
+              <a class="nav-link login-custom" [routerLink]="['/invoice-details',  {username: username }]" [queryParams]="{queryParams: {username: username }}" > Invoice Details</a>
+          </li>
           <li class="nav-item">
-              <a class="nav-link register-custom" routerLink="/home">Home</a>
-          </li> -->
+              <a class="nav-link register-custom" [routerLink]="['/invoice-upload',  {username: username }]" >Invoice Upload</a>
+          </li>
       </ul>
   </div>
 </nav>
