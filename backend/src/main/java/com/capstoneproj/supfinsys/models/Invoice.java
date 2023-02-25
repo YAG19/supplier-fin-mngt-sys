@@ -1,10 +1,7 @@
 package com.capstoneproj.supfinsys.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +11,11 @@ import lombok.Setter;
 @Table(name="invoiceData")
 public class Invoice {
 	
+
 	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long Id;
 	@Column(name = "supplierCode", nullable = false)
 	private String supplierCode;
 	
@@ -29,7 +30,10 @@ public class Invoice {
 	
 	@Column(name = "currency", nullable = false)
 	private String currency;
-	
+
+	@Column(name = "username")
+	private String username;
+
 	@Column(name = "file")
 	@Lob
 	private byte[] file;

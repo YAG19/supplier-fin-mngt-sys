@@ -12,6 +12,8 @@ import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { SupplierRegistrationComponent } from './component/supplier-registration/supplier-registration.component';
 import { InvoiceUploadComponent } from './component/invoice-upload/invoice-upload.component';
+import { InvoiceComponent } from './component/invoice/invoice.component';
+import { InvoiceModule } from './component/invoice/invoice.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { InvoiceUploadComponent } from './component/invoice-upload/invoice-uploa
     SupplierRegistrationComponent,
     InvoiceUploadComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { InvoiceUploadComponent } from './component/invoice-upload/invoice-uploa
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    InvoiceModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

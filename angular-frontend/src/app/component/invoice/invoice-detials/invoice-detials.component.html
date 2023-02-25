@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header">Supplier Invoices</div>
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-sm-3">Supplier Code:</div>
+      <div class="col-sm-9">{{ supplierCode }}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-3">Invoice Number:</div>
+      <div class="col-sm-9">{{ invoiceNumber }}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-3">Invoice Date:</div>
+      <div class="col-sm-9">{{ invoiceDate | date }}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-3">Invoice Amount:</div>
+      <div class="col-sm-9">{{ invoiceAmount | currency:currency }}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-3">Currency:</div>
+      <div class="col-sm-9">{{ currency }}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-3">Invoice Status:</div>
+      <div class="col-sm-9">{{ invoiceStatus }}</div>
+    </div>
+  </div>
+</div>
+

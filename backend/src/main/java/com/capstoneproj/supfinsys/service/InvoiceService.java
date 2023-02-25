@@ -1,7 +1,6 @@
 package com.capstoneproj.supfinsys.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.capstoneproj.supfinsys.models.Invoice;
 
@@ -9,5 +8,7 @@ import com.capstoneproj.supfinsys.models.Invoice;
 public interface InvoiceService {
 	
 	Invoice uploadInvoice(Invoice invoice);
+
+	void getInvoiceData(String username);
 
 }

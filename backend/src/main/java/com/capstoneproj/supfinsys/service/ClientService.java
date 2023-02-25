@@ -1,5 +1,6 @@
 package com.capstoneproj.supfinsys.service;
 
+import com.capstoneproj.supfinsys.exception.IncorrectPasswordException;
 import com.capstoneproj.supfinsys.models.ClientDto;
 import com.capstoneproj.supfinsys.models.User;
 import com.capstoneproj.supfinsys.models.Userdto;
@@ -13,5 +14,5 @@ import java.util.Optional;
 public interface ClientService {
     
     Client createClient(ClientDto client);
-    Client login(Userdto user);
+    User login(Userdto user);
 }

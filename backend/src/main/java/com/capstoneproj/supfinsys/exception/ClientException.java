@@ -10,15 +10,19 @@ public class ClientException extends RuntimeException{
 
     @ExceptionHandler(UsernameAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorResponse handleUsernameAlreadyExistsException(UsernameAlreadyExistsException ex) {
-        return new ErrorResponse("Username already exists");
+    public ResponseMessage handleUsernameAlreadyExistsException(UsernameAlreadyExistsException ex) {
+        return new ResponseMessage("Username already exists");
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse handleUsernameNotFoundException(UsernameNotFoundException ex) {
-        return new ErrorResponse("Username does not exist");
+    public ResponseMessage handleUsernameNotFoundException(UsernameNotFoundException ex) {
+        return new ResponseMessage("Username does not exist");
     }
-
+    @ExceptionHandler(IncorrectPasswordException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseMessage handleIncorrectPasswordException(IncorrectPasswordException ex) {
+        return new ResponseMessage("Incorrect Password");
+    }
 
 }

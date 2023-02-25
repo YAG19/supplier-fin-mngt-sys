@@ -4,21 +4,33 @@
   <div class="mb-3">
     <label for="supplierCode" class="form-label">Supplier Code</label>
     <input type="text" id="supplierCode" class="form-control" formControlName="supplierCode">
+    <div *ngIf="submitted && f.supplierCode.errors" class="invalid-feedback">
+      <div *ngIf="f.supplierCode.errors.required"> Supplier Code is required</div>
+  </div>
   </div>
 
   <div class="mb-3">
     <label for="invoiceNumber" class="form-label">Invoice Number</label>
     <input type="text" id="invoiceNumber" class="form-control" formControlName="invoiceNumber">
+    <div *ngIf="submitted && f.invoiceNumber.errors" class="invalid-feedback">
+      <div *ngIf="f.invoiceNumber.errors.required"> Invoice Number is required</div>
+  </div>
   </div>
 
   <div class="mb-3">
     <label for="invoiceDate" class="form-label">Invoice Date</label>
     <input type="date" id="invoiceDate" class="form-control" formControlName="invoiceDate">
+    <div *ngIf="submitted && f.invoiceDate.errors" class="invalid-feedback">
+      <div *ngIf="f.invoiceDate.errors.required"> Invoice Date is required</div>
+  </div>
   </div>
 
   <div class="mb-3">
     <label for="invoiceAmount" class="form-label">Invoice Amount</label>
     <input type="number" id="invoiceAmount" class="form-control" formControlName="invoiceAmount">
+    <div *ngIf="submitted && f.invoiceAmount.errors" class="invalid-feedback">
+      <div *ngIf="f.invoiceAmount.errors.required"> Invoice Ammount is required</div>
+  </div>
   </div>
 
   <div class="mb-3">
@@ -26,12 +38,18 @@
     <select id="currency" class="form-select" formControlName="currency">
       <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
     </select>
+    <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
+      <div *ngIf="f.currency.errors.required"> Invoice Ammount is required</div>
+  </div>
   </div>
 
   <div class="mb-3">
     <label for="invoiceFile" class="form-label">Invoice File</label>
     <input type="file" id="invoiceFile" class="form-control" (change)="onFileSelected($event)" accept=".pdf" #fileUpload>
+    <div *ngIf="submitted && f.invoiceFile.errors" class="invalid-feedback">
+      <div *ngIf="f.invoiceFile.errors.required"> Invoice Ammount is required</div>
+  </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!invoiceForm.valid">Upload</button>
+  <button type="submit" class="btn btn-primary" [disabled]="loading">Upload</button>
 </form>

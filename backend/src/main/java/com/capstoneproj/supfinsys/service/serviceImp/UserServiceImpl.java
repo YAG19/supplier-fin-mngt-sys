@@ -1,5 +1,6 @@
 package com.capstoneproj.supfinsys.service.serviceImp;
 
+import com.capstoneproj.supfinsys.exception.UsernameNotFoundException;
 import com.capstoneproj.supfinsys.models.User;
 import com.capstoneproj.supfinsys.repository.UserRepository;
 import com.capstoneproj.supfinsys.service.UserService;
@@ -10,17 +11,17 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 
-@Service
 @Transactional
+@Service("UserServiceImp")
 public class UserServiceImpl implements UserService {
-
 
     @Autowired
     UserRepository userRepository;
 
     @Override
-    public Optional<User> getClientByUsername(String userName) {
-        return userRepository.findByUsername(userName);
+    public User getClientByUsername(String userName) throws UsernameNotFoundException {
+        return userRepository.findByUsername(userName).orElseThrow( () ->
+                new UsernameNotFoundException("Username Does Not Exists"));
     }
 
     @Override

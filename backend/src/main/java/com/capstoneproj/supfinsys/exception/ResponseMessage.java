@@ -1,9 +1,9 @@
 package com.capstoneproj.supfinsys.exception;
 
-public class ErrorResponse {
+public class ResponseMessage {
     private String message;
 
-    public ErrorResponse(String message) {
+    public ResponseMessage(String message) {
         this.message = message;
     }
 

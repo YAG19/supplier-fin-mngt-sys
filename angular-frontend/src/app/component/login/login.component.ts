@@ -51,8 +51,12 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: (data) => {
-                  if(data?.loanAccNumber){
+                  console.log(data);
+                  if(data?.username){
                     this.notifyService.showSuccess("Login successful!","")
+                    console.log(data)
+                    let dataToSend = JSON.stringify(data)
+                    this.router.navigate(['invoice/invoice-details'], { queryParams: { userData: dataToSend } });
                   }
                   else{
                     this.notifyService.showError("Invalid Password","");

@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service("ClientService")
+@Service("UserService")
 public interface UserService {
 
-    Optional<User> getClientByUsername(String userName);
+    User getClientByUsername(String userName);
     boolean clientUsernameExists(String username);
 }
