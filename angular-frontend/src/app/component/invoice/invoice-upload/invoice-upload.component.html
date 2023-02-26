@@ -1,17 +1,119 @@
+<section class="vh-100" style="background-color: #2779e2;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-9">
+        <h1 class="text-white mb-4">Upload Invoice Information</h1>
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+        <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" class="mt-4">
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Supplier Code</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="text" formControlName="supplierCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.supplierCode.errors }" >
+                <div *ngIf="submitted && f.supplierCode.errors" class="invalid-feedback">
+                  <div *ngIf="invoiceForm.controls.supplierCode.errors?.required"> Supplier Code is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Invoice Number</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="text" formControlName="invoiceNumber" id="invoiceNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.invoiceNumber.errors }" >
+                <div *ngIf="submitted && f.invoiceNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.invoiceNumber.errors.required"> Invoice Number is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Invoice Date</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="date" id="invoiceDate" class="form-control" formControlName="invoiceDate" [ngClass]="{ 'is-invalid': submitted && f.invoiceDate.errors }">
+                <div *ngIf="submitted && f.invoiceDate.errors" class="invalid-feedback">
+                  <div *ngIf="f.invoiceDate.errors.required"> Invoice Date is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Invoice Amount</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="number" id="invoiceAmount" class="form-control" formControlName="invoiceAmount" [ngClass]="{ 'is-invalid': submitted && f.invoiceAmount.errors }">
+                <div *ngIf="submitted && f.invoiceAmount.errors" class="invalid-feedback">
+                  <div *ngIf="f.invoiceAmount.errors.required"> Invoice Amount is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Currency</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <select id="currency" class="form-select" formControlName="currency" [ngClass]="{ 'is-invalid': submitted && f.currency.errors }" >
+                  <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+                </select>
+                <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
+                  <div *ngIf="f.currency.errors.required"> Currency is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Upload Invoice </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="file" id="invoiceFile" class="form-control form-control-lg" (change)="onFileSelected($event)" accept=".pdf" #fileUpload [ngClass]="{ 'is-invalid': submitted && f.invoiceFile.errors }">
+                <div class="small text-muted mt-2">Upload your Invoice PDF file. Max file size 1 MB</div>
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="px-5 py-4">
+              <button [disabled]="loading" type="submit" class="btn btn-primary btn-lg">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                Upload Invoice
+              </button>
+                <a class="btn btn-primary btn-lg" style="float: right" [routerLink]="['/invoice-details',  {username: username, role: role }]" > Invoice Details</a>
+
+            </div>
+</form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
 <h1>Upload Invoice</h1>
 
-<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" class="mt-4">
-  <div class="mb-3">
-    <label for="supplierCode" class="form-label">Supplier Code</label>
-    <input type="text" id="supplierCode" class="form-control" formControlName="supplierCode">
+<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" class="mt-4"> -->
+
+  <!-- <div class="mb-3">
+    <label class="form-label"> Name </label>
+    <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required"> Name is required</div>
+    </div>
+</div> -->
+  <!-- <div class="mb-3">
+    <label class="form-label">Supplier Code</label>
+    <input type="text" formControlName="supplierCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.supplierCode.errors }" >
     <div *ngIf="submitted && f.supplierCode.errors" class="invalid-feedback">
-      <div *ngIf="f.supplierCode.errors.required"> Supplier Code is required</div>
+      <div *ngIf="invoiceForm.controls.supplierCode.errors?.required"> Supplier Code is required</div>
   </div>
   </div>
 
   <div class="mb-3">
     <label for="invoiceNumber" class="form-label">Invoice Number</label>
-    <input type="text" id="invoiceNumber" class="form-control" formControlName="invoiceNumber">
+    <input type="text" formControlName="invoiceNumber" id="invoiceNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.invoiceNumber.errors }" >
     <div *ngIf="submitted && f.invoiceNumber.errors" class="invalid-feedback">
       <div *ngIf="f.invoiceNumber.errors.required"> Invoice Number is required</div>
   </div>
@@ -19,7 +121,7 @@
 
   <div class="mb-3">
     <label for="invoiceDate" class="form-label">Invoice Date</label>
-    <input type="date" id="invoiceDate" class="form-control" formControlName="invoiceDate">
+    <input type="date" id="invoiceDate" class="form-control" formControlName="invoiceDate" [ngClass]="{ 'is-invalid': submitted && f.invoiceDate.errors }">
     <div *ngIf="submitted && f.invoiceDate.errors" class="invalid-feedback">
       <div *ngIf="f.invoiceDate.errors.required"> Invoice Date is required</div>
   </div>
@@ -27,7 +129,7 @@
 
   <div class="mb-3">
     <label for="invoiceAmount" class="form-label">Invoice Amount</label>
-    <input type="number" id="invoiceAmount" class="form-control" formControlName="invoiceAmount">
+    <input type="number" id="invoiceAmount" class="form-control" formControlName="invoiceAmount" [ngClass]="{ 'is-invalid': submitted && f.invoiceAmount.errors }">
     <div *ngIf="submitted && f.invoiceAmount.errors" class="invalid-feedback">
       <div *ngIf="f.invoiceAmount.errors.required"> Invoice Ammount is required</div>
   </div>
@@ -35,21 +137,24 @@
 
   <div class="mb-3">
     <label for="currency" class="form-label">Currency</label>
-    <select id="currency" class="form-select" formControlName="currency">
+    <select id="currency" class="form-select" formControlName="currency" [ngClass]="{ 'is-invalid': submitted && f.currency.errors }" >
       <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
     </select>
     <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
-      <div *ngIf="f.currency.errors.required"> Invoice Ammount is required</div>
+      <div *ngIf="f.currency.errors.required"> Currnecy is required</div>
   </div>
   </div>
 
   <div class="mb-3">
     <label for="invoiceFile" class="form-label">Invoice File</label>
-    <input type="file" id="invoiceFile" class="form-control" (change)="onFileSelected($event)" accept=".pdf" #fileUpload>
+    <input type="file" id="invoiceFile" class="form-control" (change)="onFileSelected($event)" accept=".pdf" #fileUpload [ngClass]="{ 'is-invalid': submitted && f.invoiceFile.errors }">
     <div *ngIf="submitted && f.invoiceFile.errors" class="invalid-feedback">
-      <div *ngIf="f.invoiceFile.errors.required"> Invoice Ammount is required</div>
   </div>
   </div>
+  <button [disabled]="loading" class="btn btn-primary">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+    Upload Invoice
+  </button>
+  <a class="btn btn-primary m-4" [routerLink]="['/invoice-details',  {username: username }]" > Invoice Details</a>
+</form> -->
 
-  <button type="submit" class="btn btn-primary" [disabled]="loading">Upload</button>
-</form>

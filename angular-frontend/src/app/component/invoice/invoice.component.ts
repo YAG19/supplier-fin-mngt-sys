@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InvoiceComponent implements OnInit {
   public username!: string;
+  public role!: string;
+  public toRender: boolean = true;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -16,6 +18,9 @@ export class InvoiceComponent implements OnInit {
     console.log(JSON.parse(paramsData));
     let userData = JSON.parse(paramsData);
     this.username = userData?.username;
+    this.role = userData?.role;
+
+    if(this.role === 'SUPPLIER') this.toRender = false;
   }
 
 }

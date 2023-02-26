@@ -9,6 +9,8 @@ import com.capstoneproj.supfinsys.models.Invoice;
 import com.capstoneproj.supfinsys.repository.InvoiceRepository;
 import com.capstoneproj.supfinsys.service.InvoiceService;
 
+import java.util.List;
+
 @Service("InvoiceServiceImp")
 public class InvoiceServiceImp implements InvoiceService {
 	
@@ -23,14 +25,19 @@ public class InvoiceServiceImp implements InvoiceService {
 	}
 
 	@Override
-	public Invoice uploadInvoice(Invoice invoice) {
+	public Invoice saveInvoice(Invoice invoice) {
 		return invoiceRepository.save(invoice);
 	}
 
     @Override
-    public Invoice getInvoiceData(String username) {
-		return invoiceRepository.findByUsername(username).orElseThrow(InvoiceServiceImp::getUsernameNotFoundException);
-
+    public List<Invoice> getInvoiceData(String username) {
+		List<Invoice> invoiceList = invoiceRepository.findAllByUsername(username).orElseThrow(InvoiceServiceImp::getUsernameNotFoundException);
+		return invoiceList;
 	}
+
+    @Override
+    public List<Invoice> getAllInvoiceData() {
+		return invoiceRepository.findAll();
+    }
 
 }

@@ -4,15 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientRegistrarionComponent } from './component/client-registrarion/client-registrarion.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { SupplierRegistrationComponent } from './component/supplier-registration/supplier-registration.component';
-import { InvoiceUploadComponent } from './component/invoice/invoice-upload/invoice-upload.component';
-import { InvoiceComponent } from './component/invoice/invoice.component';
 import { InvoiceModule } from './component/invoice/invoice.module';
 
 @NgModule({
@@ -20,11 +17,11 @@ import { InvoiceModule } from './component/invoice/invoice.module';
     AppComponent,
     ClientRegistrarionComponent,
     SupplierRegistrationComponent,
-    InvoiceUploadComponent,
     HomeComponent,
     LoginComponent,
   ],
   imports: [
+    InvoiceModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -32,7 +29,6 @@ import { InvoiceModule } from './component/invoice/invoice.module';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    InvoiceModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

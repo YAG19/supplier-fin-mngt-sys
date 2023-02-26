@@ -1,30 +1,43 @@
-<div class="card">
-  <div class="card-header">Supplier Invoices</div>
-  <div class="card-body">
-    <div class="row mb-3">
-      <div class="col-sm-3">Supplier Code:</div>
-      <div class="col-sm-9">{{ supplierCode }}</div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">Invoice Number:</div>
-      <div class="col-sm-9">{{ invoiceNumber }}</div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">Invoice Date:</div>
-      <div class="col-sm-9">{{ invoiceDate | date }}</div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">Invoice Amount:</div>
-      <div class="col-sm-9">{{ invoiceAmount | currency:currency }}</div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">Currency:</div>
-      <div class="col-sm-9">{{ currency }}</div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">Invoice Status:</div>
-      <div class="col-sm-9">{{ invoiceStatus }}</div>
+<section class="vh-100" style="background-color: #2779e2;">
+  <div class="container h-100">
+    <div class="row d-flex h-100">
+      <div class="">
+        <h1 class="text-white mb-4"> Invoice Details</h1>
+        <div class="card bg-secondary" style="border-radius: 15px;">
+          <div class="card-body text-white bg-secondary mb-3">
+
+            <table class="table table-dark table-striped">
+              <thead>
+                <tr>
+                  <th>Supplier Code</th>
+                  <th>Invoice Number</th>
+                  <th>Invoice Date</th>
+                  <th>Invoice Amount</th>
+                  <th>Currency</th>
+                  <th>Invoice Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of invoiceList" >
+                  <td>{{ data?.supplierCode }}</td>
+                  <td>{{ data?.invoiceNumber }}</td>
+                  <td>{{ data?.invoiceDate | date }}</td>
+                  <td>{{ data?.invoiceAmount | currency: data?.currency }}</td>
+                  <td>{{ data?.currency }}</td>
+                  <td>{{ data?.invoiceStatus }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="mb-3">
+              <p  *ngIf="noData" >  No Invoice is Available for {{username}} </p>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
+</section>

@@ -1,3 +1,149 @@
+<section class="vh-100" style="background-color: #2779e2;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-9">
+        <h1 class="text-white mb-4"> Client Regestration </h1>
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+      <form [formGroup]="clientRegistrationForm" (ngSubmit)="onSubmit()">
+
+
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Name </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required"> Name is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-2 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Address </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+            <textarea  type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" >
+            </textarea>
+              </div>
+            </div>
+
+            <div class="row align-items-center pt-0 pb-1">
+              <div class="col-md-2 ps-5">
+              </div>
+              <div class="col-md-9 pe-2">
+                <div class="d-flex justify-space-between">
+                <div class="col-sm-4">
+                  <label class="form-label"> City </label>
+                  <select id="city" formControlName="city" class="form-control p-1">
+                  <option *ngFor="let city of cityList" [value]="city">{{city}}</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label class="form-label"> State </label>
+                <select formControlName="state" class="form-control p-1" >
+                  <option *ngFor="let state of stateList" [value]="state">{{state}}</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label class="form-label"> Country </label>
+                <select formControlName="country" class="form-control p-1">
+                  <option  *ngFor="let country of countryList" [value]="country">{{country}}</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-2 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Email </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.invlaid">Email is Not Valid</div>
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-2 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Mobile Number </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="tel" formControlName="mobNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobNumber.errors }" />
+              <div *ngIf="submitted && f.mobNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.mobNumber.errors">Mobile Number should only be of 10 digit</div>
+            </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-1 pb-2">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Loan Account Number </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="text" formControlName="loanAccNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loanAccNumber.errors }" />
+                <div *ngIf="submitted && f.loanAccNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.loanAccNumber.errors.required">Loan Account Number is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-1 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Loan Information </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <label class="form-label"></label>
+              <input type="text" formControlName="loanInfo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loanInfo.errors }" />
+              <div *ngIf="submitted && f.loanInfo.errors" class="invalid-feedback">
+              <div *ngIf="f.loanInfo.errors.required">Loan Information is required</div>
+            </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-2 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Username </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center pt-2 pb-3">
+              <div class="col-md-2 ps-5">
+                <h6 class="mb-0"> Password </h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+              </div>
+              </div>
+            </div>
+
+            <div class="ms-5 mt-2">
+              <button [disabled]="loading" class="btn btn-primary">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                  Register
+              </button>
+              <a routerLink="../" class="btn btn-link">Cancel</a>
+          </div>
+
+          </form>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+
 <div class="card">
   <h4 class="card-header">Register</h4>
   <div class="card-body">
@@ -16,30 +162,31 @@
         </div>
             <div class="form-group">
               <label class="form-label"> City </label>
-            <select formControlName="city" class="form-control">
-              <option  *ngFor="let city of cityList">{{city}}</option>
+            <select id="city" formControlName="city" class="form-control">
+            <option *ngFor="let city of cityList" [value]="city">{{city}}</option>
           </select>
           <label class="form-label"> State </label>
             <select formControlName="state" class="form-control">
-              <option  *ngFor="let state of stateList">{{state}}</option>
+      <option *ngFor="let state of stateList" [value]="state">{{state}}</option>
           </select>
           <label class="form-label"> Country </label>
           <select formControlName="country" class="form-control">
-            <option  *ngFor="let country of countryList">{{country}}</option>
+            <option  *ngFor="let country of countryList" [value]="country">{{country}}</option>
         </select>
             </div>
           <div class="mb-3">
               <label class="form-label">Email</label>
               <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.invlaid">Email is Not Valid</div>
+                <div *ngIf="f.email.errors.required">Email is required</div>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label">Mobile Number</label>
               <input type="tel" formControlName="mobNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobNumber.errors }" />
               <div *ngIf="submitted && f.mobNumber.errors" class="invalid-feedback">
-                <div *ngIf="f.mobNumber.errors">Mobile Number only 10 digit</div>
+                <div *ngIf="f.mobNumber.errors">Mobile Number should only be of 10 digit</div>
             </div>
             </div>
           <div class="mb-3">
@@ -70,7 +217,7 @@
                   <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
               </div>
           </div>
-          <div>
+          <div style="margin: 150px;" >
               <button [disabled]="loading" class="btn btn-primary">
                   <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
                   Register
@@ -80,4 +227,4 @@
           </div>
       </form>
   </div>
-</div>
+</div> -->

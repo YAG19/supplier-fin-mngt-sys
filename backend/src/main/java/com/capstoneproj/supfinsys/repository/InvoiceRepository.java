@@ -4,16 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.capstoneproj.supfinsys.models.Invoice;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface InvoiceRepository extends JpaRepository<Invoice, Integer> {
 
     Optional<Invoice> getByUsername(String username);
 
-    @Override
-    default Optional<Invoice> findById(Integer integer) {
-        return Optional.empty();
-    }
-
-    Optional<Invoice> findByUsername(String username);
+    Optional<List<Invoice>> findAllByUsername(String username);
 }

@@ -4,11 +4,14 @@ import org.springframework.stereotype.Service;
 
 import com.capstoneproj.supfinsys.models.Invoice;
 
+import java.util.List;
+
 @Service("InvoiceService")
 public interface InvoiceService {
 	
-	Invoice uploadInvoice(Invoice invoice);
+	Invoice saveInvoice(Invoice invoice);
 
-	Invoice getInvoiceData(String username);
+	List<Invoice> getInvoiceData(String username);
 
+	List<Invoice> getAllInvoiceData();
 }

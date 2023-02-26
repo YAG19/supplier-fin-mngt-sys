@@ -5,5 +5,6 @@ export interface InvoiceDto {
   invoiceAmount: number;
   currency: string;
   username: string;
+  invoiceStatus: string;
   file: File
 }

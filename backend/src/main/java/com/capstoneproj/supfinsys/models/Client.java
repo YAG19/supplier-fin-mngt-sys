@@ -35,17 +35,8 @@ public class Client {
     @Column(name = "loanInfo")
     private String loanInfo;
 
-//    @Column(name = "username", length = 20 )
-//    private String username;
-
     @Column(name = "loanAccNumber", nullable = false)
     private Long loanAccNumber;
-
-//    @Column(name = "password", length = 40 )
-//    private String password;
-
-//    @Column(name = "role")
-//    private String role;
 
 
     public User getUser() {
@@ -119,6 +110,5 @@ public class Client {
     public void setLoanAccNumber(Long loanAccNumber) {
         this.loanAccNumber = loanAccNumber;
     }
-
 
 }

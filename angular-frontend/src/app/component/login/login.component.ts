@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router,
         private clientService: ClientService,
         private notifyService: NotificationServiceService
@@ -32,22 +31,17 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.ClientLoginForm.controls; }
+    get form() { return this.ClientLoginForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        // this.alertService.clear();
-
-        // stop here if form is invalid
         if (this.ClientLoginForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.clientService.login(this.f.username.value, this.f.password.value)
+        this.clientService.login(this.form.username.value, this.form.password.value)
             .pipe(first())
             .subscribe({
                 next: (data) => {

@@ -9,15 +9,6 @@ const baseUrl = 'http://localhost:8080/api/invoice';
 })
 export class InvoiceService {
 
-  public login(value: any, value1: any): Observable<any> {
-    const userDto = {
-      username: value,
-      password: value1
-    }
-    const url = '/login'
-    return this.http.post(baseUrl + url, userDto);
-  }
-
   constructor(private http: HttpClient,
     private fileuploadService: FileUploadService
     ) { }
@@ -30,4 +21,7 @@ export class InvoiceService {
     return this.http.get(baseUrl + `/details/${username}`);
   }
 
+  getAllInvoiceDetials(): Observable<any> {
+    return this.http.get(baseUrl + `/details`);
+  }
 }

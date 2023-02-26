@@ -2,7 +2,7 @@ package com.capstoneproj.supfinsys.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Userdto {
+public class UserDto {
 	
 	@JsonProperty("username")
 	private String username;
