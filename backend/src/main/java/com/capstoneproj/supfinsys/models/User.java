@@ -27,7 +27,7 @@ public class User {
     private Client client;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "supplier", referencedColumnName = "id")
+    @JoinColumn(name = "supplier", referencedColumnName = "supplierCode")
     private Supplier supplier;
 
 }

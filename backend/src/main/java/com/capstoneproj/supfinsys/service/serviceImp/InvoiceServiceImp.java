@@ -1,5 +1,6 @@
 package com.capstoneproj.supfinsys.service.serviceImp;
 
+import com.capstoneproj.supfinsys.exception.ResponseMessage;
 import com.capstoneproj.supfinsys.exception.UsernameNotFoundException;
 import com.capstoneproj.supfinsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class InvoiceServiceImp implements InvoiceService {
     @Override
     public List<Invoice> getAllInvoiceData() {
 		return invoiceRepository.findAll();
+    }
+
+    @Override
+    public List<Invoice> getInvoiceForSupplierCode(Long supplierCode) {
+
+		return invoiceRepository.findAllBySupplierCode(supplierCode).get();
     }
 
 }

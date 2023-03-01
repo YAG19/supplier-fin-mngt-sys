@@ -14,4 +14,6 @@ public interface InvoiceService {
 	List<Invoice> getInvoiceData(String username);
 
 	List<Invoice> getAllInvoiceData();
+
+    List<Invoice> getInvoiceForSupplierCode(Long supplierCode);
 }

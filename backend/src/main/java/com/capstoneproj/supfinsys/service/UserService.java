@@ -10,4 +10,5 @@ public interface UserService {
 
     User getClientByUsername(String userName);
     boolean clientUsernameExists(String username);
+
 }

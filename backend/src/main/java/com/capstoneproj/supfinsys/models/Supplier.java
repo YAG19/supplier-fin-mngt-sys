@@ -12,8 +12,8 @@ public class Supplier {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "supplierCode")
+	private Long supplierCode;
 
 	@OneToOne(mappedBy = "supplier")
 	private User user;
@@ -45,12 +45,12 @@ public class Supplier {
 		this.user = user;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getSupplierCode() {
+		return supplierCode;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setSupplierCode(Long supplierCode) {
+		this.supplierCode = supplierCode;
 	}
 
 	public Long getCreditAccNumber() {

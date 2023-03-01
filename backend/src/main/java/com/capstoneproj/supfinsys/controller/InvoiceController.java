@@ -1,6 +1,8 @@
 package com.capstoneproj.supfinsys.controller;
 
 import com.capstoneproj.supfinsys.exception.ResponseMessage;
+import com.capstoneproj.supfinsys.models.User;
+import com.capstoneproj.supfinsys.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class InvoiceController {
 	private InvoiceService invoiceService;
 
 
+	@Autowired
+	UserService userService;
+
 	@PostMapping(path = "/upload")
 	public ResponseEntity<ResponseMessage> invoiceUpload(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("invoice") String invoiceJson ) throws IOException {
 		Invoice invoice = convertToDto(invoiceJson);
@@ -40,13 +45,17 @@ public class InvoiceController {
 
 	@GetMapping(path = "/details/{username}")
 	public List<Invoice> getInvoiceData(@PathVariable("username") String username){
+		User userDto = userService.getClientByUsername(username);
+		if(userDto.getRole().equalsIgnoreCase("SUPPLIER")){
+			return invoiceService.getInvoiceForSupplierCode(userDto.getSupplier().getSupplierCode());
+		}
 		return invoiceService.getInvoiceData(username);
 	}
 
-	@GetMapping(path = "/details")
-	public List<Invoice> getAllInvoiceData(){
-		return invoiceService.getAllInvoiceData();
-	}
+//	@GetMapping(path = "/details/{supplierCode}")
+//	public List<Invoice> getInvoiceForSupplier(@PathVariable Long supplierCode){
+//		return invoiceService.getInvoiceForSupplierCode(supplierCode);
+//	}
 	private Invoice convertToDto(String invoiceJson) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(invoiceJson, Invoice.class);
