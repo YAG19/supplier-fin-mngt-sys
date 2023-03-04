@@ -32,17 +32,17 @@ export class SupplierRegistrationComponent implements OnInit {
 
     ngOnInit() {
         this.supplierRegistrationForm = this.formBuilder.group({
-            name: ['yagnesh', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-            address: [''],
-            city:[''],
-            state:[],
-            country:[],
-            email: ['yagnesh@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+            name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+            address: ['',[Validators.required]],
+            city:['',[Validators.required]],
+            state:['',[Validators.required]],
+            country:['',[Validators.required]],
+            email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
             mobNumber: ['', [Validators.minLength(10), Validators.maxLength(10)]],
-            creditAccNumber: ['123456', Validators.required],
-            creditInfo: ['asdad', Validators.required],
-            username: ['yagnesh1234', Validators.required],
-            password: ['yagnesh1234', [Validators.required, Validators.minLength(6)]]
+            creditAccNumber: ['', Validators.required],
+            creditInfo: ['', Validators.required],
+            username: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 

@@ -11,6 +11,7 @@ import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { SupplierRegistrationComponent } from './component/supplier-registration/supplier-registration.component';
 import { InvoiceModule } from './component/invoice/invoice.module';
+import { LogoutComponent } from './component/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { InvoiceModule } from './component/invoice/invoice.module';
     SupplierRegistrationComponent,
     HomeComponent,
     LoginComponent,
+    LogoutComponent
   ],
   imports: [
     InvoiceModule,

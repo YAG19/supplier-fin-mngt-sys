@@ -17,22 +17,47 @@
                 <label class="form-label"> Address </label>
                 <textarea  type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" >
                 </textarea>
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                  <div *ngIf="f.address.errors.required"> Name is required</div>
+              </div>
             </div>
 
-                <div class="form-group">
+
+            <div class="row align-items-center pt-0 pb-1">
+              <div class="col-md-2 ps-5">
+              </div>
+              <div class="col-md-9 pe-2">
+                <div class="d-flex justify-space-between">
+                <div class="col-sm-4">
                   <label class="form-label"> City </label>
-                <select formControlName="city" class="form-control">
-                  <option  *ngFor="let city of cityList">{{city}}</option>
-              </select>
-              <label class="form-label"> State </label>
-                <select formControlName="state" class="form-control">
-                  <option  *ngFor="let state of stateList">{{state}}</option>
-              </select>
-              <label class="form-label"> Country </label>
-              <select formControlName="country" class="form-control">
-                <option  *ngFor="let country of countryList">{{country}}</option>
-            </select>
+                  <select id="city" formControlName="city" class="form-control p-1">
+                  <option *ngFor="let city of cityList" [value]="city">{{city}}</option>
+                </select>
+                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                  <div *ngIf="f.city.errors.required"> City is required</div>
+              </div>
+              </div>
+              <div class="col-sm-4">
+                <label class="form-label"> State </label>
+                <select formControlName="state" class="form-control p-1" >
+                  <option *ngFor="let state of stateList" [value]="state">{{state}}</option>
+                </select>
+                <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                  <div *ngIf="f.state.errors.required"> State is required</div>
+              </div>
+              </div>
+              <div class="col-sm-4">
+                <label class="form-label"> Country </label>
+                <select formControlName="country" class="form-control p-1">
+                  <option  *ngFor="let country of countryList" [value]="country">{{country}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                    <div *ngIf="f.country.errors.required"> Country is required</div>
                 </div>
+                </div>
+                </div>
+              </div>
+            </div>
               <div class="mb-3">
                   <label class="form-label">Email</label>
                   <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
@@ -50,10 +75,16 @@
               <div class="mb-3">
                   <label class="form-label">Credit Account Number </label>
                   <input type="text" formControlName="creditAccNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.creditAccNumber.errors }" />
-              </div>
+                  <div *ngIf="submitted && f.creditAccNumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.creditAccNumber.errors.required"> Credit Account Number is required</div>
+                  </div>
+                </div>
               <div class="mb-3">
                   <label class="form-label">Credit Information </label>
                   <input type="text" formControlName="creditInfo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.creditInfo.errors }" />
+                  <div *ngIf="submitted && f.creditInfo.errors" class="invalid-feedback">
+                    <div *ngIf="f.creditInfo.errors.required"> Credit Information is required</div>
+                  </div>
               </div>
               <div class="mb-3">
                   <label class="form-label">Username</label>

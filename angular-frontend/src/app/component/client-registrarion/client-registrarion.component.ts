@@ -29,17 +29,17 @@ export class ClientRegistrarionComponent implements OnInit {
 
     ngOnInit() {
         this.clientRegistrationForm = this.formBuilder.group({
-            name: ['yagnesh', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-            address: ['Room no 101, xyz society'],
-            city:[],
-            state:[],
-            country:[],
-            email: ['yagnesh@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+            name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+            address: ['', [Validators.required, Validators.minLength(3)]],
+            city:['',[Validators.required]],
+            state:['',[Validators.required]],
+            country:['',[Validators.required]],
+            email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
             mobNumber: ['', [Validators.minLength(10), Validators.maxLength(10)]],
             loanAccNumber: [123456, Validators.required],
-            loanInfo: ['Home', Validators.required],
-            username: ['yagnesh1234', [Validators.required]],
-            password: ['yagnesh1234', [Validators.required, Validators.minLength(6)]]
+            loanInfo: ['', Validators.required],
+            username: ['', [Validators.required]],
+            password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 

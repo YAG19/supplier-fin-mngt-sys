@@ -52,10 +52,6 @@ public class InvoiceController {
 		return invoiceService.getInvoiceData(username);
 	}
 
-//	@GetMapping(path = "/details/{supplierCode}")
-//	public List<Invoice> getInvoiceForSupplier(@PathVariable Long supplierCode){
-//		return invoiceService.getInvoiceForSupplierCode(supplierCode);
-//	}
 	private Invoice convertToDto(String invoiceJson) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(invoiceJson, Invoice.class);

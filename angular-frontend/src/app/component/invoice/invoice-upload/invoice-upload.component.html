@@ -1,4 +1,10 @@
 <section class="vh-100" style="background-color: #2779e2;">
+  <nav class="navbar navbar-expand-lg navbar-brand" style="background-color: #1391ff;">
+    <!-- <a class="navbar-brand brand-custom" [routerLink]="['/invoice', {username: username, role: role  }]"> Home </a> -->
+    <div class="collapse navbar-collapse float-right" id="navbarText">
+        <a class="nav-link" [routerLink]="['/login',  {username: '', role: ''  }]" >logout</a>
+    </div>
+  </nav>
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-9">

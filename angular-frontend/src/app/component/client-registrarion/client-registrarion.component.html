@@ -6,8 +6,6 @@
         <div class="card" style="border-radius: 15px;">
           <div class="card-body">
       <form [formGroup]="clientRegistrationForm" (ngSubmit)="onSubmit()">
-
-
             <div class="row align-items-center pt-4 pb-3">
               <div class="col-md-2 ps-5">
                 <h6 class="mb-0"> Name </h6>
@@ -26,7 +24,10 @@
               <div class="col-md-9 pe-5">
             <textarea  type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" >
             </textarea>
-              </div>
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required"> Address is required</div>
+          </div>
+          </div>
             </div>
 
             <div class="row align-items-center pt-0 pb-1">
@@ -39,18 +40,27 @@
                   <select id="city" formControlName="city" class="form-control p-1">
                   <option *ngFor="let city of cityList" [value]="city">{{city}}</option>
                 </select>
+                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                  <div *ngIf="f.city.errors.required"> City is required</div>
+              </div>
               </div>
               <div class="col-sm-4">
                 <label class="form-label"> State </label>
                 <select formControlName="state" class="form-control p-1" >
                   <option *ngFor="let state of stateList" [value]="state">{{state}}</option>
                 </select>
+                <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                  <div *ngIf="f.state.errors.required"> State is required</div>
+              </div>
               </div>
               <div class="col-sm-4">
                 <label class="form-label"> Country </label>
                 <select formControlName="country" class="form-control p-1">
                   <option  *ngFor="let country of countryList" [value]="country">{{country}}</option>
                   </select>
+                  <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                    <div *ngIf="f.country.errors.required"> Country is required</div>
+                </div>
                 </div>
                 </div>
               </div>
